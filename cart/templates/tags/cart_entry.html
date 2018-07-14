@@ -1,0 +1,40 @@
+<tr>
+    <td>
+    <a href="{{ item.get_absolute_url }}" class="cart">
+      {{item.product.brand}} {{ item.name }}
+    </a>
+    </td>
+    <td>{{ item.price}} CFA</td>
+    <td class="right">
+    <form method="post" action="." class="form" role="form">{% csrf_token %}
+
+    <div class="item_add " >
+            <input  type="text" name="quantity" value="{{ item.quantity }}" id="quantity" size="1" class="quantity" maxlength="3" />
+
+            <span title="Add 1 item " class="add_item glyphicon glyphicon-plus" onclick="cart_update(this,{{item.product.id}}, {{item.quantity|add:"1"}})">
+            {% if item.quantity > 1 %}
+            <span  title="Remove 1 item "  class="remove_item glyphicon glyphicon-minus"  onclick="cart_update(this,{{item.product.id}}, {{item.quantity|add:"-1"}})">
+            {% endif %}
+    </div>
+    <input  type="hidden" name="item_id" value="{{ item.id }}" />
+    </td>
+
+    <td>
+    <label for="refresh">
+    <span class="glyphicon glyphicon-refresh"></span>
+    <input type="submit" name="submit" value="Actualiser" id="refresh"/>
+    </label>
+    </form>
+    </td>
+<td>
+<form method="post" action="." class="form">{% csrf_token %}
+<input type="hidden" name="item_id" value="{{ item.id }}" />
+<input type="hidden" name="quantity" value="{{ item.quantity}}" />
+<label for="delete">
+<span class="glyphicon glyphicon-remove"></span>
+<input  id="delete" type="submit" name="submit" value="Supprimer"/>
+</label>
+</form>
+</td>
+<td class="right">{{ item.total}} CFA</td>
+</tr>

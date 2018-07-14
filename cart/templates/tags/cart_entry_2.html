@@ -1,0 +1,22 @@
+<tr>
+    <td>
+        <a href="{{ item.get_absolute_url }}" class="cart">
+          {{item.product.brand}} {{ item.name }}
+        </a>
+    </td>
+    <td class="right">
+        <div class="entry"  data-itemid="{{item.product.id}}" data-quantity="{{item.quantity}}">
+                <input  class="text-center" type="text" name="quantity" value="{{ item.quantity }}" id="quantity" size="1" class="quantity" />
+                <span class=" btn btn-xs add_item glyphicon glyphicon-plus" title="Augmenter de 1"></span>
+                {% if item.quantity > 1 %}
+                <span class="btn btn-xs remove_item glyphicon glyphicon-minus" title="Diminuer de 1"></span>
+                {% endif %}
+                <span class="delete btn glyphicon glyphicon-remove" title="Supprimer cet element"></span>
+
+        </div>
+    </td>
+
+<td></td>
+<td>{{ item.price}} CFA</td>
+<td class="right">{{ item.total}} CFA</td>
+</tr>

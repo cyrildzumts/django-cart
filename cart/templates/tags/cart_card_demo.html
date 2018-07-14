@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="card-horizontal">
+        <div class="row">
+            <div class="col-xs-3 col-md-2">
+                <div class="card-image">
+                    <a href="{{item.get_absolute_url}}">
+                        <img src="{{item.image.url}}" class="img-responsive" >
+                    </a>
+                </div><!-- End Of Card-Image -->
+            </div>
+            <div class="col-xs-9 col-md-10">
+                <div class="row">
+                    <div class="col-xs-8 col-md-8">
+                        <div class="card-item-title">
+                            <p class="entry-title">
+                                <a href="{{ item.get_absolute_url }}">
+                                    {{ item.name }} : {{item.price}} CFA
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                         <p class="entry-sum">
+                            Montant Total : {{ item.total}} CFA
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="entry"  data-itemid="{{item.product.id}}" data-quantity="{{item.quantity}}">
+                    <input  class="text-center" type="text" name="quantity" value="{{ item.quantity }}" id="quantity" size="1" class="quantity" />
+                    {% if item.product.quantity > 1 %}
+                    <span class=" btn btn-xs add_item glyphicon glyphicon-plus" title="Augmenter de 1"></span>
+                    {% endif %}
+                    {% if item.quantity > 1 %}
+                    <span class="btn btn-xs remove_item glyphicon glyphicon-minus" title="Diminuer de 1"></span>
+                    {% endif %}
+
+                    </div>
+                    <div class="entry-ref">
+                        <p> {{item.product.sku}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-11 col-md-11">
+
+                    </div>
+
+                    <div class="col-xs-1 col-md-1">
+                        <p class="remove">
+                            Supprimer <span class="delete glyphicon glyphicon-remove" title="Supprimer cet element"></span>
+                        </p>
+                    </div>
+                </div>
+
+            </div><!-- End Of Col -->
+
+            
+        </div><!-- End Of row -->
+    </div> <!-- End Of Card -->
+</div> <!-- end Of Container -->

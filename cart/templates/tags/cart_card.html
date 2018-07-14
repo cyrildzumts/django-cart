@@ -1,0 +1,57 @@
+<div class="container-fluid card-cart">
+    <div class="col-xs-3 col-md-2">
+        <div class="card-cart-image">
+            <a href="{{item.get_absolute_url}}">
+                <img src="{{item.image.url}}" class="img-responsive" >
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-9 col-md-10">
+        <div class="row entry-details">
+            <div class="col-md-8">
+                <p class="entry-title row">
+                    <a href="{{ item.get_absolute_url }}">
+                        {{ item.name }} : {{item.price}} CFA
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p class="entry-sum">
+                    Montant total : {{ item.total}} CFA
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="entry"  data-itemid="{{item.product.id}}" data-quantity="{{item.quantity}}">
+                    <input  class="text-center" type="text" name="quantity" value="{{ item.quantity }}" id="quantity" size="1" class="quantity" />
+                    {% if item.product.quantity > 1 %}
+                    <span class=" btn btn-xs add_item glyphicon glyphicon-plus" title="Augmenter de 1"></span>
+                    {% endif %}
+                    {% if item.quantity > 1 %}
+                    <span class="btn btn-xs remove_item glyphicon glyphicon-minus" title="Diminuer de 1"></span>
+                    {% endif %}
+
+                </div>
+                <div class="entry-ref">
+                    <p> </p>
+                </div>
+                <div class="">
+                </div>
+                <div class="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                    <p class="remove">
+                        Supprimer <span class="glyphicon glyphicon-remove" title="Supprimer cet element"></span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

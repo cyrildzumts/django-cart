@@ -1,0 +1,87 @@
+{% extends "flat_minimal_base.html" %}
+
+
+{%block CURRENT_CATEGORY_PATH%}
+
+{%endblock CURRENT_CATEGORY_PATH%}
+
+{% block MAINCONTENT %}
+<div class="flat-col-xs-12 flat-col-md-12">
+
+
+        <div class="flat">
+
+       
+                                        
+        <div class="flat-row">
+                <div class="flat-col-xs-12">
+                        <div class="card">
+                                <div class="header">
+                                        <div>Appercu de votre Panier : </div>
+                                        <span>
+                                                <strong><span class="cart-counter">{{cart_item_count}}</span></strong> article(s)
+                                        </span>
+                                </div>
+                                <div class="content">
+                                                <div class="text-center">
+                                                        <div class="highlight">Ici se trouve les articles que vous souhaitez acheter.</div> 
+                                                        <div class="note"><i> Les articles présent dans le Panier ne sont pas reservés.</i></div>
+                                                </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        {% if cart_items %}
+        
+
+
+        <div id="cart" class="card">
+
+                <div class="content">
+                                {% for item  in cart_items %}
+                                        {% include "tags/card_entry_flat.html" %}
+                                {% endfor %}
+                </div>
+                        
+
+                <div id="js-cart-summary" class="footer">
+                                <div class="entry">Montant Total : <strong> <span class="cart-subtotal"> {{cart_subtotal}}</span> FCFA </strong></div>
+                                <div class="entry">Frais d'envoie :    <strong> 0.00 FCFA </strong></div>
+                                <div class="entry">Reduction :   <strong> 0.00 FCFA</strong></div>
+                                <div class="entry"><strong> Somme Total : <span class="cart-subtotal"> {{cart_subtotal}}</span> FCFA </strong></div>
+                                
+                </div>
+                <div class="flat-checkout-link">
+                                <a class="flat-btn checkout-link" href="/order/{{checkout_url}}">
+                                Aller à la caisse
+                                </a>
+                </div>
+                
+        </div>
+
+
+        
+        {%else%}
+        <div class="card">
+                <section class="header bordered">
+                        <h4 class="card-title"> Panier Vide</h4>
+                        <h6 class="card-subtitle">Veuillez ajouter des article dans le panier</h6>
+                </section>
+                <!-- End Of Main Section -->
+                <section class="content bordered">
+                        <p>
+                        Votre Panier ne contient aucun article.</br>
+                        Parcourrez la liste d'articles en vente sur le site</br>
+                        et ajouter les produits que vous desirez acheter dans le Panier. </br>
+                        </p>
+                </section>
+                <!-- End Of Main Section -->
+                <!-- End Of Card -->
+        </div>
+
+        {% endif %}
+
+<!-- End Of Container -->
+        </div>
+</div>
+{% endblock MAINCONTENT %}

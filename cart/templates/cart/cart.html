@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block PageContent %}
+
+
+{% if not cart_item_count %}
+  <p> Votre Panier ne contient aucun article. </p>
+
+  {% else %}
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-10">
+
+        Article : {{cart_item_count}} <br />
+      <div class="container-fluid bordered-container">
+        <table summary="Votre Panier" id="shopping_cart" class="table table-hover table-condensed table-responsive">
+          <caption>  Votre Panier </caption>
+          <thead>
+            <!-- header info here -->
+            <tr>
+
+            <th >Article </th>
+            <th>Quantité</th>
+            <th></th>
+            <th></th>
+            <th > Prix Unitaire </th>
+            <th scope="col" class="right"> Prix Total</th>
+
+            <!-- ..etc .. -->
+          </tr>
+          </thead>
+          <tfoot>
+            <!-- footer info here -->
+            <tr>
+              <th class="right" colspan="5">
+                Sous Total:
+              </th>
+              <th class="right"> {{cart_subtotal}} CFA</th>
+            </tr>
+            {% if cart_items %}
+            <tr>
+              <th class="right" colspan="6">
+                <!-- here comes the link to the checkout -->
+                [ Aller à la caisse]
+
+                <a href="/order/{{checkout_url}}" class="btn btn-default" role="button"> Checkout</a>
+              </th>
+            </tr>
+            {% endif %}
+          </tfoot>
+          <tbody>
+            {% if cart_items %}
+        {% for item in cart_items %}
+        {% include "tags/cart_card_demo.html" %}
+        {% endfor %}
+        {% else %}
+        <tr>
+        <td colspan="6" style="height:30px;">
+        Votre panier est vide.
+        </td>
+        </tr>
+        {% endif %}
+            <!-- loop through cart item here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+  </div>
+
+</div>
+
+{% endif %}
+{% endblock PageContent %}
