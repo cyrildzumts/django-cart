@@ -16,3 +16,4 @@
 *.gz
 *.zip
 dist
+django_cart.egg-info
