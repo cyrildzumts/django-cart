@@ -12,4 +12,7 @@
 */migrations/*
 */__pycache__/*
 *.log
-
+*tar.gz
+*.gz
+*.zip
+dist
